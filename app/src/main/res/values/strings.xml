@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Practica3</string>
+    <string name="checkout">Checkout</string>
+    <string name="empty_cart">Vaciar</string>
+    <string name="remove">Quitar</string>
+    <string name="pay">Pagar</string>
+    <string name="cancel">Cancelar</string>
+
+    <string name="mock_card_payment">Pago con tarjeta (mock)</string>
+    <string name="hint_card_number">Número de tarjeta</string>
+    <string name="hint_expiry">Caducidad (MM/AA)</string>
+    <string name="hint_cvv">CVV</string>
+    <string name="hint_card_holder">Titular</string>
+
+</resources>

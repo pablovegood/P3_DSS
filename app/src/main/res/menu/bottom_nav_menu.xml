@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_products"
+        android:title="Productos"
+        android:icon="@android:drawable/ic_menu_sort_by_size"/>
+    <item
+        android:id="@+id/nav_cart"
+        android:title="Carrito"
+        android:icon="@android:drawable/ic_menu_add"/>
+    <item
+        android:id="@+id/nav_map"
+        android:title="Mapa"
+        android:icon="@android:drawable/ic_menu_mapmode"/>
+</menu>
