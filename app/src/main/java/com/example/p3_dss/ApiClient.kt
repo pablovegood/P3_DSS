@@ -5,7 +5,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
 
-    // Emulador -> tu PC. Ajusta si usas otra URL/puerto
     private const val BASE_URL = "http://10.0.2.2:8080/"
 
     val api: ApiService by lazy {

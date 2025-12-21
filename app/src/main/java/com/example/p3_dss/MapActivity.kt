@@ -17,7 +17,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlin.math.*
 import com.google.android.material.appbar.MaterialToolbar
@@ -49,7 +48,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         setSupportActionBar(topAppBar)
         supportActionBar?.title = "Almacenes Cerca"
 
-        // Bottom Navigation (igual que tenías)
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
         bottomNav.selectedItemId = R.id.nav_map
         bottomNav.setOnItemSelectedListener { item ->

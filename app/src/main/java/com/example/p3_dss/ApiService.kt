@@ -6,7 +6,7 @@ import retrofit2.http.*
 interface ApiService {
 
     @GET("api/productos")
-    fun getProductos(): Call<List<Product>>
+    fun getProductos(@Query("query") query: String? = null): Call<List<Product>>
 
     @GET("api/cart")
     fun getCart(): Call<CartResponse>
@@ -23,7 +23,6 @@ interface ApiService {
     @POST("api/cart/checkout")
     fun checkout(): Call<CartResponse>
 
-    // ADMIN (si aún no lo tienes implementado en backend, esto compila igual)
     @POST("api/productos")
     fun adminAddProducto(
         @Header("Authorization") auth: String,

@@ -1,18 +1,23 @@
 package com.example.p3_dss
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.InputType
 import android.util.Base64
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,6 +26,10 @@ class MainActivity : ComponentActivity() {
 
     private lateinit var adapter: ProductAdapter
 
+    private val searchHandler = Handler(Looper.getMainLooper())
+    private var pendingSearch: Runnable? = null
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -63,11 +72,23 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        cargarProductos()
+        val etSearch = findViewById<TextInputEditText>(R.id.etSearch)
+        etSearch.doAfterTextChanged { text ->
+            val q = text?.toString()?.trim().orEmpty()
+
+            pendingSearch?.let { searchHandler.removeCallbacks(it) }
+            pendingSearch = Runnable {
+
+                cargarProductos(q.takeIf { it.isNotBlank() })
+            }
+            searchHandler.postDelayed(pendingSearch!!, 250)
+        }
+
+        cargarProductos(null)
     }
 
-    private fun cargarProductos() {
-        ApiClient.api.getProductos().enqueue(object : Callback<List<Product>> {
+    private fun cargarProductos(query: String?) {
+        ApiClient.api.getProductos(query).enqueue(object : Callback<List<Product>> {
             override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
                 if (!response.isSuccessful) {
                     Toast.makeText(this@MainActivity, "HTTP ${response.code()}", Toast.LENGTH_LONG).show()
@@ -125,7 +146,6 @@ class MainActivity : ComponentActivity() {
         )
         val authHeader = "Basic $token"
 
-        // ✅ Validación real contra backend (nada hardcodeado)
         ApiClient.api.authMe(authHeader).enqueue(object : Callback<Map<String, Any>> {
             override fun onResponse(call: Call<Map<String, Any>>, response: Response<Map<String, Any>>) {
                 if (response.isSuccessful) {

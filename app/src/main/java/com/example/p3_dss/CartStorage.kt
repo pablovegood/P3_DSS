@@ -23,7 +23,7 @@ object CartStorage {
         val json = gson.toJson(items)
         sp.edit()
             .putString(KEY, json)
-            .apply()                    // <-- IMPORTANTE
+            .apply()
     }
 
     // Añadir producto
@@ -47,6 +47,6 @@ object CartStorage {
 
     // Total
     fun total(items: List<Product>): Double {
-        return items.sumOf { it.productoPrecio }    // usa aquí el campo de precio que tengas
+        return items.sumOf { it.productoPrecio }
     }
 }

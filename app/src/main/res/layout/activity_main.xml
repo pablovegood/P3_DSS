@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/gris_claro">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
@@ -17,26 +17,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilSearch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:hint="@string/hint_search_products"
+        app:startIconDrawable="@android:drawable/ic_menu_search"
+        app:endIconMode="clear_text"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:imeOptions="actionSearch"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Listado de productos -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvProductos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="12dp"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:clipToPadding="false"
+        android:contentDescription="@string/cd_products_list"
+        app:layout_constraintTop_toBottomOf="@id/tilSearch"
         app:layout_constraintBottom_toTopOf="@id/bottomNav"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/blanco"
-        app:itemIconTint="@color/verde"
-        app:itemTextColor="@color/negro"
         app:menu="@menu/bottom_nav_menu"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
