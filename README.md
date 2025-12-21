@@ -155,4 +155,7 @@ Los endpoints admin requieren cabecera:
 La app valida credenciales usando:
 - `GET /api/auth/me`
 
+## Manual de Usuario
+
+Para el correcto funcionamiento de la aplicación, se recomienda consultar el manual de usuario localizado en el siguiente enlace de Google Drive: https://drive.google.com/file/d/12b1LLvwUV2oqmmclLxSfigh2qa_K9C2b/view?usp=drive_link 
   
