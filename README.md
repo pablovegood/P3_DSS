@@ -140,8 +140,8 @@ Base URL configurada en la app: `http://10.0.2.2:8080/`
 |---|---|---|
 | **GET** | `/api/productos` | Devuelve el listado de productos (libros). Admite filtro opcional por texto mediante `query`. |
 | **GET** | `/api/cart` | Obtiene el estado del carrito (si el backend lo soporta). |
-| **POST** | `/api/cart/add/{id}` | Añade un producto al carrito por `id` (si el backend lo soporta). |
-| **POST** | `/api/cart/remove/{id}` | Elimina una unidad del producto del carrito por `id` (si el backend lo soporta). |
+| **POST** | `/api/cart/add/{id}` | Añade un producto al carrito por `id`. |
+| **POST** | `/api/cart/remove/{id}` | Elimina una unidad del producto del carrito por `id`. |
 | **POST** | `/api/cart/clear` | Vacía el carrito (si el backend lo soporta). |
 | **POST** | `/api/cart/checkout` | Realiza el checkout / finaliza compra (en la app el pago se simula). |
 | **POST** | `/api/productos` | Crea un producto (requiere `Authorization: Basic ...`). |
